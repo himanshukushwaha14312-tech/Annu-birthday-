@@ -1,61 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Happy Birthday Annu 🎉</title>
-<link rel="stylesheet" href="style.css">
-</head>
+const correctPassword = "annu123";
 
-<body>
+// login
+function login() {
+  let p = document.getElementById("pass").value;
+  if (p === correctPassword) {
+    localStorage.setItem("auth", "true");
+    window.location.href = "home.html";
+  } else {
+    document.getElementById("msg").innerText = "❌ Wrong Password";
+  }
+}
 
-<!-- 🎬 Intro -->
-<div id="intro">
-  <h1>💖 For My Special Annu 💖</h1>
-</div>
+// protection
+if (window.location.pathname.includes("home.html")) {
+  if (localStorage.getItem("auth") !== "true") {
+    window.location.href = "index.html";
+  }
+}
 
-<h1 class="glow">🎉 Happy Birthday Annu ❤️</h1>
+// logout
+function logout() {
+  localStorage.removeItem("auth");
+  window.location.href = "index.html";
+}
 
-<p id="typing"></p>
+// music
+function toggleMusic() {
+  let music = document.getElementById("music");
+  if (music.paused) music.play();
+  else music.pause();
+}
 
-<button onclick="toggleMusic()">🎵 Play / Pause Music</button>
+// gallery click
+function showImg(el) {
+  document.getElementById("slide").src = el.src;
+}
 
-<!-- 📸 Gallery -->
-<h2>📸 Our Memories</h2>
+// auto slider
+let images = [
+  "photos/p1.jpg",
+  "photos/p2.jpg",
+  "photos/p3.jpg",
+  "photos/p4.jpg",
+  "photos/p5.jpg"
+];
 
-<div class="slider">
-  <img id="slide" src="photos/p1.jpg">
-</div>
+let index = 0;
 
-<div class="thumbs">
-  <img src="photos/p1.jpg" onclick="showImg(this)">
-  <img src="photos/p2.jpg" onclick="showImg(this)">
-  <img src="photos/p3.jpg" onclick="showImg(this)">
-  <img src="photos/p4.jpg" onclick="showImg(this)">
-  <img src="photos/p5.jpg" onclick="showImg(this)">
-</div>
+function autoSlide() {
+  index++;
+  if (index >= images.length) index = 0;
+  document.getElementById("slide").src = images[index];
+}
+setInterval(autoSlide, 3000);
 
-<!-- 🎁 Surprise -->
-<button onclick="showSurprise()">🎁 Surprise</button>
-<p id="output"></p>
+// typing
+let text = "Happy Birthday Annu 💖 Tum meri duniya ho 😍";
+let i = 0;
 
-<button onclick="logout()">Logout</button>
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 40);
+  }
+}
+typing();
 
-<!-- 🎵 Music -->
-<audio id="music" loop>
-  <source src="song.mp3">
-</audio>
-
-<!-- ❤️ Hearts -->
-<div id="hearts"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
-<script src="script.js"></script>
-
-<script>
-setTimeout(() => {
-  document.getElementById("intro").style.display = "none";
-  confetti();
-}, 3000);
-</script>
-
-</body>
-</html>
+// surprise
+function showSurprise() {
+  document.getElementById("output").innerHTML =
+  "💖 I Love You Annu 💖";
+}
