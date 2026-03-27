@@ -1,0 +1,47 @@
+body {
+  text-align: center;
+  font-family: Arial;
+  color: white;
+  background: linear-gradient(45deg, #ff6ec4, #7873f5);
+}
+
+.login-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.glass {
+  background: rgba(255,255,255,0.2);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+input, button {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  background: red;
+  color: white;
+}
+
+.glow {
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px white; }
+  to { text-shadow: 0 0 30px yellow; }
+}
+
+.gallery img {
+  width: 100px;
+  margin: 5px;
+  border-radius: 10px;
+}
