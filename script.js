@@ -1,51 +1,61 @@
-const correctPassword = "annu123";
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Annu 🎉</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
-function login() {
-  let p = document.getElementById("pass").value;
-  if (p === correctPassword) {
-    localStorage.setItem("auth", "true");
-    window.location.href = "home.html";
-  } else {
-    document.getElementById("msg").innerText = "❌ Wrong Password";
-  }
-}
+<body>
 
-if (window.location.pathname.includes("home.html")) {
-  if (localStorage.getItem("auth") !== "true") {
-    window.location.href = "index.html";
-  }
-}
+<!-- 🎬 Intro -->
+<div id="intro">
+  <h1>💖 For My Special Annu 💖</h1>
+</div>
 
-function logout() {
-  localStorage.removeItem("auth");
-  window.location.href = "index.html";
-}
+<h1 class="glow">🎉 Happy Birthday Annu ❤️</h1>
 
-function toggleMusic() {
-  let music = document.getElementById("music");
-  if (music.paused) music.play();
-  else music.pause();
-}
+<p id="typing"></p>
 
-function showSurprise() {
-  document.getElementById("output").innerHTML =
-  "💖 You are my happiness Annu 💖";
-}
+<button onclick="toggleMusic()">🎵 Play / Pause Music</button>
 
-function showLove() {
-  document.getElementById("output").innerHTML =
-  "🌍 Tum meri duniya ho ❤️";
-}
+<!-- 📸 Gallery -->
+<h2>📸 Our Memories</h2>
 
-let text = "Tum meri life ki sabse special ladki ho 💖";
-let i = 0;
+<div class="slider">
+  <img id="slide" src="photos/p1.jpg">
+</div>
 
-function typing() {
-  if (i < text.length) {
-    document.getElementById("typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing, 50);
-  }
-}
+<div class="thumbs">
+  <img src="photos/p1.jpg" onclick="showImg(this)">
+  <img src="photos/p2.jpg" onclick="showImg(this)">
+  <img src="photos/p3.jpg" onclick="showImg(this)">
+  <img src="photos/p4.jpg" onclick="showImg(this)">
+  <img src="photos/p5.jpg" onclick="showImg(this)">
+</div>
 
-typing();
+<!-- 🎁 Surprise -->
+<button onclick="showSurprise()">🎁 Surprise</button>
+<p id="output"></p>
+
+<button onclick="logout()">Logout</button>
+
+<!-- 🎵 Music -->
+<audio id="music" loop>
+  <source src="song.mp3">
+</audio>
+
+<!-- ❤️ Hearts -->
+<div id="hearts"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
+<script src="script.js"></script>
+
+<script>
+setTimeout(() => {
+  document.getElementById("intro").style.display = "none";
+  confetti();
+}, 3000);
+</script>
+
+</body>
+</html>
