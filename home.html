@@ -4,30 +4,60 @@
 <title>Happy Birthday Annu 🎉</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1 class="glow">🎉 Happy Birthday Annu ❤️</h1>
-<p id="typing"></p>
 
-<button onclick="toggleMusic()">🎵 Music On/Off</button>
-
-<h2>📸 Memories</h2>
-<div class="gallery">
-  <img src="photos/p1.jpg">
-  <img src="photos/p2.jpg">
-  <img src="photos/p3.jpg">
+<!-- 🎬 Intro -->
+<div id="intro">
+  <h1>💖 For My Special Annu 💖</h1>
 </div>
 
-<button onclick="showSurprise()">🎁 Surprise 1</button>
-<button onclick="showLove()">💌 Surprise 2</button>
+<h1 class="glow">🎉 Happy Birthday Annu ❤️</h1>
 
+<p id="typing"></p>
+
+<button onclick="toggleMusic()">🎵 Play / Pause Music</button>
+
+<!-- 📸 Gallery -->
+<h2>📸 Our Memories</h2>
+
+<div class="slider">
+  <img id="slide" src="photos/p1.jpg">
+</div>
+
+<div class="thumbs">
+  <img src="photos/p1.jpg" onclick="showImg(this)">
+  <img src="photos/p2.jpg" onclick="showImg(this)">
+  <img src="photos/p3.jpg" onclick="showImg(this)">
+  <img src="photos/p4.jpg" onclick="showImg(this)">
+  <img src="photos/p5.jpg" onclick="showImg(this)">
+</div>
+
+<!-- 🎁 Surprise -->
+<button onclick="showSurprise()">🎁 Surprise</button>
 <p id="output"></p>
 
 <button onclick="logout()">Logout</button>
 
+<!-- 🎵 Music -->
 <audio id="music" loop>
   <source src="song.mp3">
 </audio>
 
+<!-- ❤️ Hearts -->
+<div id="hearts"></div>
+
+<!-- 🎆 Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
+
 <script src="script.js"></script>
+
+<script>
+setTimeout(() => {
+  document.getElementById("intro").style.display = "none";
+  confetti();
+}, 3000);
+</script>
+
 </body>
 </html>
