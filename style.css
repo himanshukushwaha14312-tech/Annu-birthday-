@@ -45,3 +45,14 @@ button {
   margin: 5px;
   border-radius: 10px;
 }
+.slider img {
+  width: 250px;
+  border-radius: 15px;
+}
+
+.thumbs img {
+  width: 70px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
