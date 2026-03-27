@@ -1,8 +1,9 @@
 const correctPassword = "annu123";
 
-// login
+// LOGIN FIXED
 function login() {
-  let p = document.getElementById("pass").value;
+  let p = document.getElementById("pass").value.trim();
+
   if (p === correctPassword) {
     localStorage.setItem("auth", "true");
     window.location.href = "home.html";
@@ -11,32 +12,32 @@ function login() {
   }
 }
 
-// protection
+// PAGE PROTECTION
 if (window.location.pathname.includes("home.html")) {
   if (localStorage.getItem("auth") !== "true") {
     window.location.href = "index.html";
   }
 }
 
-// logout
+// LOGOUT
 function logout() {
   localStorage.removeItem("auth");
   window.location.href = "index.html";
 }
 
-// music
+// MUSIC
 function toggleMusic() {
   let music = document.getElementById("music");
   if (music.paused) music.play();
   else music.pause();
 }
 
-// gallery click
+// GALLERY CLICK
 function showImg(el) {
   document.getElementById("slide").src = el.src;
 }
 
-// auto slider
+// AUTO SLIDER
 let images = [
   "photos/p1.jpg",
   "photos/p2.jpg",
@@ -54,7 +55,7 @@ function autoSlide() {
 }
 setInterval(autoSlide, 3000);
 
-// typing
+// TYPING
 let text = "Happy Birthday Annu 💖 Tum meri duniya ho 😍";
 let i = 0;
 
@@ -67,7 +68,7 @@ function typing() {
 }
 typing();
 
-// surprise
+// SURPRISE
 function showSurprise() {
   document.getElementById("output").innerHTML =
   "💖 I Love You Annu 💖";
