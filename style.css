@@ -26,6 +26,7 @@ button {
   border-radius: 10px;
   background: red;
   color: white;
+  cursor: pointer;
 }
 
 /* VIDEO */
