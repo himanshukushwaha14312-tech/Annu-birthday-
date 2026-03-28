@@ -1,24 +1,20 @@
-body {
-  text-align: center;
-  font-family: Arial;
-  background: linear-gradient(45deg, pink, purple);
-  color: white;
-}
-
+/* LOGIN */
 .login-bg {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: linear-gradient(45deg, black, purple);
 }
 
 .glass {
   background: rgba(255,255,255,0.2);
   padding: 30px;
   border-radius: 15px;
+  text-align: center;
 }
 
-input, button {
+input {
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
@@ -26,22 +22,44 @@ input, button {
 }
 
 button {
+  padding: 10px;
+  border-radius: 10px;
   background: red;
   color: white;
-  cursor: pointer;
 }
 
-.glow {
-  animation: glow 1s infinite alternate;
+/* VIDEO */
+#bgVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
 }
 
-@keyframes glow {
-  from { text-shadow: 0 0 10px white; }
-  to { text-shadow: 0 0 30px yellow; }
+/* CONTENT */
+.content {
+  text-align: center;
+  padding: 20px;
+  color: white;
 }
 
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* GALLERY */
 .slider img {
-  width: 250px;
+  width: 260px;
   border-radius: 15px;
 }
 
@@ -52,6 +70,17 @@ button {
   cursor: pointer;
 }
 
+/* GLOW */
+.glow {
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px white; }
+  to { text-shadow: 0 0 30px yellow; }
+}
+
+/* INTRO */
 #intro {
   position: fixed;
   width: 100%;
@@ -61,18 +90,4 @@ button {
   justify-content: center;
   align-items: center;
   z-index: 999;
-}
-
-#hearts::before {
-  content: "❤️ 💖 💕 💘 💞";
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  animation: float 5s linear infinite;
-  text-align: center;
-}
-
-@keyframes float {
-  from { transform: translateY(100%); }
-  to { transform: translateY(-100%); }
 }
