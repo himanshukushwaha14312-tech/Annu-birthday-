@@ -1,75 +1,89 @@
-const correctPassword = "annu123";
+// 🔐 LOGIN DETAILS
+const USERNAME = "himanshu";
+const PASSWORD = "annu";
 
-// LOGIN FIXED
+// LOGIN
 function login() {
+  let u = document.getElementById("user").value.trim();
   let p = document.getElementById("pass").value.trim();
 
-  if (p === correctPassword) {
-    localStorage.setItem("auth", "true");
+  if (u === USERNAME && p === PASSWORD) {
+    sessionStorage.setItem("auth", "true");
     window.location.href = "home.html";
   } else {
-    document.getElementById("msg").innerText = "❌ Wrong Password";
+    document.getElementById("msg").innerText = "❌ Wrong Username or Password";
   }
 }
 
-// PAGE PROTECTION
+// PROTECTION
 if (window.location.pathname.includes("home.html")) {
-  if (localStorage.getItem("auth") !== "true") {
+  if (sessionStorage.getItem("auth") !== "true") {
     window.location.href = "index.html";
   }
 }
 
 // LOGOUT
 function logout() {
-  localStorage.removeItem("auth");
+  sessionStorage.removeItem("auth");
   window.location.href = "index.html";
 }
 
-// MUSIC
+// 🔒 AUTO LOCK
+document.addEventListener("visibilitychange", function () {
+  if (document.hidden) {
+    sessionStorage.removeItem("auth");
+  }
+});
+
+window.addEventListener("beforeunload", function () {
+  sessionStorage.removeItem("auth");
+});
+
+// 🎵 MUSIC
 function toggleMusic() {
-  let music = document.getElementById("music");
-  if (music.paused) music.play();
-  else music.pause();
+  let m = document.getElementById("music");
+  if (m.paused) m.play();
+  else m.pause();
 }
 
-// GALLERY CLICK
+// 📸 GALLERY
 function showImg(el) {
   document.getElementById("slide").src = el.src;
 }
 
-// AUTO SLIDER
-let images = [
-  "photos/p1.jpg",
-  "photos/p2.jpg",
-  "photos/p3.jpg",
-  "photos/p4.jpg",
-  "photos/p5.jpg"
-];
-
-let index = 0;
-
-function autoSlide() {
-  index++;
-  if (index >= images.length) index = 0;
-  document.getElementById("slide").src = images[index];
+// 🎁 SURPRISE
+function showSurprise() {
+  document.getElementById("output").innerHTML =
+    "💖 You are my life Annu 💖";
 }
-setInterval(autoSlide, 3000);
 
-// TYPING
-let text = "Happy Birthday Annu 💖 Tum meri duniya ho 😍";
+// 🎂 CAKE
+function cutCake() {
+  document.getElementById("cakeMsg").innerHTML =
+    "🎉 Cake Cut! Happy Birthday ❤️";
+}
+
+// 🎆 CONFETTI
+function fire() {
+  confetti({
+    particleCount: 200,
+    spread: 120
+  });
+}
+
+// 💌 POPUP
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+// ✍️ TYPING EFFECT
+let text = "Annu, tum meri sabse special ho ❤️";
 let i = 0;
-
 function typing() {
   if (i < text.length) {
     document.getElementById("typing").innerHTML += text.charAt(i);
     i++;
-    setTimeout(typing, 40);
+    setTimeout(typing, 50);
   }
 }
 typing();
-
-// SURPRISE
-function showSurprise() {
-  document.getElementById("output").innerHTML =
-  "💖 I Love You Annu 💖";
-}
