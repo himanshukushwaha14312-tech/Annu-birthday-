@@ -4,14 +4,15 @@ const PASSWORD = "annu";
 
 // LOGIN FUNCTION
 function login() {
-  let u = document.getElementById("user").value.trim().toLowerCase();
-  let p = document.getElementById("pass").value.trim();
+  let u = document.getElementById("user")?.value.trim().toLowerCase();
+  let p = document.getElementById("pass")?.value.trim();
 
   if (u === USERNAME.toLowerCase() && p === PASSWORD) {
     sessionStorage.setItem("auth", "true");
     window.location.href = "home.html";
   } else {
-    document.getElementById("msg").innerText = "❌ Wrong Username or Password";
+    let msg = document.getElementById("msg");
+    if (msg) msg.innerText = "❌ Wrong Username or Password";
   }
 }
 
@@ -42,48 +43,63 @@ window.addEventListener("beforeunload", function () {
 // MUSIC
 function toggleMusic() {
   let m = document.getElementById("music");
+  if (!m) return;
   if (m.paused) m.play();
   else m.pause();
 }
 
 // GALLERY
 function showImg(el) {
-  document.getElementById("slide").src = el.src;
+  let slide = document.getElementById("slide");
+  if (slide) slide.src = el.src;
 }
 
 // SURPRISE
 function showSurprise() {
-  document.getElementById("output").innerHTML = "💖 You are my life Annu 💖";
+  let el = document.getElementById("output");
+  if (el) el.innerHTML = "💖 You are my life Annu 💖";
 }
 
 // CAKE
 function cutCake() {
-  document.getElementById("cakeMsg").innerHTML = "🎉 Cake Cut ❤️";
+  let el = document.getElementById("cakeMsg");
+  if (el) el.innerHTML = "🎉 Cake Cut ❤️";
 }
 
 // CONFETTI
 function fire() {
-  confetti({
-    particleCount: 200,
-    spread: 120
-  });
+  if (typeof confetti === "function") {
+    confetti({
+      particleCount: 200,
+      spread: 120
+    });
+  }
 }
 
 // POPUP
 function closePopup() {
-  document.getElementById("popup").style.display = "none";
+  let p = document.getElementById("popup");
+  if (p) p.style.display = "none";
 }
 
-// TYPING
+// TYPING EFFECT
 let text = "Annu, tum meri sabse special ho ❤️";
 let i = 0;
 
 function typing() {
+  let el = document.getElementById("typing");
+  if (!el) return;
+
   if (i < text.length) {
-    document.getElementById("typing").innerHTML += text.charAt(i);
+    el.innerHTML += text.charAt(i);
     i++;
     setTimeout(typing, 50);
   }
 }
 
-window.onload = typing;
+// LOAD SAFE
+window.onload = function () {
+  if (document.getElementById("typing")) {
+    typing();
+  }
+};
