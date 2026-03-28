@@ -7,17 +7,14 @@
 
 <body>
 
-<!-- Video -->
 <video autoplay muted loop id="bgVideo">
   <source src="bg.mp4" type="video/mp4">
 </video>
 
-<!-- Intro -->
 <div id="intro">
   <h1>💖 For My Special Annu 💖</h1>
 </div>
 
-<!-- Popup -->
 <div id="popup" class="popup">
   💖 Happy Birthday Annu 💖 <br> Tum meri duniya ho 😍
   <br><br>
@@ -73,8 +70,9 @@
 
 <script>
 setTimeout(() => {
-  document.getElementById("intro").style.display = "none";
-  confetti();
+  let intro = document.getElementById("intro");
+  if (intro) intro.style.display = "none";
+  if (typeof confetti === "function") confetti();
 }, 3000);
 </script>
 
