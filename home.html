@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Happy Birthday Annu 🎉</title>
-<link rel="stylesheet" href="style.css">
+  <title>Happy Birthday Annu 🎉</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- 🎥 Video Background -->
+<!-- Video -->
 <video autoplay muted loop id="bgVideo">
   <source src="bg.mp4" type="video/mp4">
 </video>
 
-<!-- 🎬 Intro -->
+<!-- Intro -->
 <div id="intro">
   <h1>💖 For My Special Annu 💖</h1>
 </div>
 
-<!-- 💌 Popup -->
+<!-- Popup -->
 <div id="popup" class="popup">
   💖 Happy Birthday Annu 💖 <br> Tum meri duniya ho 😍
   <br><br>
@@ -32,7 +32,6 @@
 
 <button onclick="toggleMusic()">🎵 Music</button>
 
-<!-- 📸 Gallery -->
 <h2>📸 Our Memories</h2>
 
 <div class="slider">
@@ -47,18 +46,14 @@
   <img src="photos/p5.jpg" onclick="showImg(this)">
 </div>
 
-<!-- 🎁 -->
 <button onclick="showSurprise()">🎁 Surprise</button>
 <p id="output"></p>
 
-<!-- 🎂 -->
 <button onclick="cutCake()">🎂 Cut Cake</button>
 <p id="cakeMsg"></p>
 
-<!-- 🎆 -->
 <button onclick="fire()">🎆 Celebrate</button>
 
-<!-- 🎤 -->
 <h3>🎤 Special Message</h3>
 <audio controls>
   <source src="voice.mp3">
@@ -69,7 +64,6 @@
 
 </div>
 
-<!-- 🎵 Music -->
 <audio id="music" loop>
   <source src="song.mp3">
 </audio>
