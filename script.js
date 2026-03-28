@@ -1,8 +1,8 @@
-// 🔐 LOGIN DETAILS
+// LOGIN DETAILS
 const USERNAME = "himanshu";
 const PASSWORD = "annu";
 
-// LOGIN
+// LOGIN FUNCTION
 function login() {
   let u = document.getElementById("user").value.trim().toLowerCase();
   let p = document.getElementById("pass").value.trim();
@@ -15,56 +15,53 @@ function login() {
   }
 }
 
-// 🔒 PROTECTION (direct access block)
+// PAGE PROTECTION
 if (window.location.pathname.includes("home.html")) {
   if (sessionStorage.getItem("auth") !== "true") {
     window.location.href = "index.html";
   }
 }
 
-// 🚪 LOGOUT
+// LOGOUT
 function logout() {
   sessionStorage.removeItem("auth");
   window.location.href = "index.html";
 }
 
-// 🔒 AUTO LOCK (tab change / minimize)
+// AUTO LOCK
 document.addEventListener("visibilitychange", function () {
   if (document.hidden) {
     sessionStorage.removeItem("auth");
   }
 });
 
-// 🔒 AUTO LOCK (page leave / back)
 window.addEventListener("beforeunload", function () {
   sessionStorage.removeItem("auth");
 });
 
-// 🎵 MUSIC
+// MUSIC
 function toggleMusic() {
   let m = document.getElementById("music");
   if (m.paused) m.play();
   else m.pause();
 }
 
-// 📸 GALLERY CLICK
+// GALLERY
 function showImg(el) {
   document.getElementById("slide").src = el.src;
 }
 
-// 🎁 SURPRISE
+// SURPRISE
 function showSurprise() {
-  document.getElementById("output").innerHTML =
-    "💖 You are my life Annu 💖";
+  document.getElementById("output").innerHTML = "💖 You are my life Annu 💖";
 }
 
-// 🎂 CAKE
+// CAKE
 function cutCake() {
-  document.getElementById("cakeMsg").innerHTML =
-    "🎉 Cake Cut! Happy Birthday ❤️";
+  document.getElementById("cakeMsg").innerHTML = "🎉 Cake Cut ❤️";
 }
 
-// 🎆 CONFETTI
+// CONFETTI
 function fire() {
   confetti({
     particleCount: 200,
@@ -72,12 +69,12 @@ function fire() {
   });
 }
 
-// 💌 POPUP
+// POPUP
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
 
-// ✍️ TYPING EFFECT
+// TYPING
 let text = "Annu, tum meri sabse special ho ❤️";
 let i = 0;
 
@@ -89,4 +86,4 @@ function typing() {
   }
 }
 
-typing();
+window.onload = typing;
